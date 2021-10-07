@@ -1,6 +1,6 @@
 export function counter(initialState = 0, counterName) {
   let counterModel = {};
-
+// Could we use "default" as default counterName value ?
   counter = function (initialState = 0, counterName) {
   if (typeof initialState === "string") {
     counterName = initialState;
@@ -11,7 +11,7 @@ export function counter(initialState = 0, counterName) {
     }
     
     const counterCalculatedName = counterName ?? "default";
-    
+    // Also we could express this instantiation logic by class and constructor
     if (counterModel[counterCalculatedName] === undefined) {
       counterModel[counterCalculatedName] = {};
       counterModel[counterCalculatedName].state = initialState
@@ -43,7 +43,9 @@ export function callableMultiplier(...args) {
   return callableMultiplier(...args);
 }
 
+//  Could we use 0 as default value here ?
 export function createCalculator(initialValue) {
+  // Do we can use named class here instead ?
   const calculator = class {
     constructor() {
      this.log = [];
@@ -59,6 +61,7 @@ export function createCalculator(initialValue) {
     get value() {
       return this._value;
     }
+    // Please, check if we can move these functions into prototype
     logFunction = function (operation, value) {
       this.log.push({ operation, value });
     };
